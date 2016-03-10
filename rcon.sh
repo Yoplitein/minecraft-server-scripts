@@ -1,6 +1,5 @@
 #!/bin/bash
 
-password=$(cat rcon_password.txt)
-
-exec mcrcon -c -H localhost -P 38001 -p $password "$*"
+source rcon_settings.txt
+exec mcrcon -c -H localhost -P $port -p $password "$*"
 
