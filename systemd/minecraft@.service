@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft server %i
+
+[Service]
+Type=simple
+WorkingDirectory=/home/minecraft/%i
+ExecStart=/usr/bin/java -Xms512M -Xmx4G -XX:PermSize=512M -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar server.jar nogui
+ExecStop=/home/minecraft/scripts/systemd-stop.sh
+Restart=always
+KillMode=none
+TimeoutStopSec=5min
+
+[Install]
+WantedBy=default.target
+

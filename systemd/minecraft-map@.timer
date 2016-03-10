@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft map render timer for %i
+
+[Timer]
+OnCalendar=daily
+Unit=minecraft-map@%i.service
+
+[Install]
+WantedBy=default.target

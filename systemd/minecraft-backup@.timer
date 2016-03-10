@@ -1,0 +1,9 @@
+[Unit]
+Description=Minecraft backup timer for %i
+
+[Timer]
+OnCalendar=daily
+Unit=minecraft-backup@%i.service
+
+[Install]
+WantedBy=default.target

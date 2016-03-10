@@ -1,0 +1,7 @@
+[Unit]
+Description=Minecraft backup of %I
+
+[Service]
+Type=simple
+WorkingDirectory=/home/minecraft/%i
+ExecStart=/home/minecraft/scripts/backup.sh
