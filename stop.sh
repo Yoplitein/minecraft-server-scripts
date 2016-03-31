@@ -42,8 +42,14 @@ while true; do
 done
 
 if [ -z "$unit" ]; then
-    echo "Missing required --unit flag"
-    exit 1
+    unit=$(basename $PWD)
+    
+    systemctl --user --quiet is-active minecraft@$unit
+    
+    if [ ! $? -eq 0 ]; then
+        echo "Guessed unit \"minecraft@$unit\" does not appear to be valid"
+        exit 1
+    fi
 fi
 
 MSG=${@-no reason given}
