@@ -2,7 +2,8 @@
 
 time=30
 unit=
-optparse=`getopt -o t:u:h -l time:,unit:,help -- "$@"`
+restart=false
+optparse=`getopt -o t:u:rh -l time:,unit:,restart,help -- "$@"`
 
 
 if [ ! $? -eq 0 ]; then
@@ -24,6 +25,10 @@ while true; do
         -u|--unit)
             unit=$2
             shift 2
+            ;;
+        -r|--restart)
+            restart=true
+            shift 1
             ;;
         --)
             shift
@@ -47,3 +52,7 @@ systemctl --user set-environment "TIME=$time"
 systemctl --user set-environment "MSG=$MSG"
 systemctl --user stop minecraft@$unit
 systemctl --user set-environment "MSG=no reason given"
+
+if $restart; then
+    systemctl --user start minecraft@$unit
+fi
