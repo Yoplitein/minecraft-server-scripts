@@ -1,6 +1,7 @@
 #!/bin/bash
 
-time=30
+defaultTime=30
+time=$defaultTime
 unit=
 restart=false
 optparse=`getopt -o t:u:rh -l time:,unit:,restart,help -- "$@"`
@@ -57,6 +58,7 @@ MSG=${@-no reason given}
 systemctl --user set-environment "TIME=$time"
 systemctl --user set-environment "MSG=$MSG"
 systemctl --user stop minecraft@$unit
+systemctl --user set-environment "TIME=$defaultTime"
 systemctl --user set-environment "MSG=no reason given"
 
 if $restart; then
