@@ -4,7 +4,7 @@ Description=Minecraft server %i
 [Service]
 Type=simple
 WorkingDirectory=/home/minecraft/%i
-ExecStart=/usr/bin/java -Xms512M -Xmx4G -XX:PermSize=512M -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar server.jar nogui
+ExecStart=/usr/bin/java -Xms512M -Xmx4G -XX:PermSize=512M -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Dfml.queryResult=confirm -jar server.jar nogui
 ExecStop=/home/minecraft/scripts/systemd-stop.sh
 Restart=always
 KillMode=none
