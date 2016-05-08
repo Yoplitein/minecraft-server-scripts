@@ -37,6 +37,10 @@ function backup()
 
 function main()
 {
+    if [ ! -e $BUP_DIR ]; then
+        mkdir $BUP_DIR
+    fi
+    
     purge
     backup
 }
