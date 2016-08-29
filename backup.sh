@@ -39,6 +39,7 @@ function main()
 {
     if [ ! -e $BUP_DIR ]; then
         mkdir $BUP_DIR
+        bup init
     fi
     
     purge
