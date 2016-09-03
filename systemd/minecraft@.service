@@ -10,6 +10,7 @@ ExecStop=/home/minecraft/scripts/systemd-stop.sh
 Restart=always
 KillMode=none
 TimeoutStopSec=5min
+SyslogIdentifier=%i
 
 [Install]
 WantedBy=default.target
