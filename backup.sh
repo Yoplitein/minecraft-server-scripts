@@ -27,7 +27,7 @@ function backup()
 {
     rcon say Backing up world
     rcon save-off
-    rcon save-all
+    rcon save-all flush
     sleep 10
     bup index world/
     bup save -n world world/
