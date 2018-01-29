@@ -4,8 +4,10 @@ Description=Minecraft server %i
 [Service]
 Type=simple
 WorkingDirectory=/home/minecraft/%i
+Environment=MEM_MIN=512M
+Environment=MEM_MAX=2G
 EnvironmentFile=-/home/minecraft/%i/environ
-ExecStart=/usr/bin/java -Xms512M -Xmx4G -XX:PermSize=512M -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Dfml.queryResult=confirm -jar server.jar nogui $CUSTOM_ARGS
+ExecStart=/usr/bin/java -Xms${MEM_MIN} -Xmx${MEM_MAX} -XX:PermSize=512M -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Dfml.queryResult=confirm $JVM_ARGS -jar server.jar nogui $MC_ARGS
 ExecStop=/home/minecraft/scripts/systemd-stop.sh
 Restart=always
 KillMode=none
