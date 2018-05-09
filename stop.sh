@@ -3,6 +3,7 @@
 source $(dirname $(readlink -f $0))/common.sh
 
 defaultTime=30
+defaultMsg="no reason given"
 time=$defaultTime
 unit=
 restart=false
@@ -53,10 +54,12 @@ if [ -z "$unit" ]; then
     fi
 fi
 
-MSG=${@-no reason given}
+msg=${@-${defaultMsg}}
+
+echo "Stopping server in $time seconds: $msg"
 
 ctl set-environment "TIME=$time"
-ctl set-environment "MSG=$MSG"
+ctl set-environment "MSG=$msg"
 ctl stop minecraft@$unit
 ctl set-environment "TIME=$defaultTime"
 ctl set-environment "MSG=$defaultMsg"
