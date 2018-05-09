@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname $(readlink -f $0))/common.sh
+
 defaultTime=30
 time=$defaultTime
 unit=
@@ -43,24 +45,22 @@ while true; do
 done
 
 if [ -z "$unit" ]; then
-    unit=$(basename $PWD)
-    
-    systemctl --user --quiet is-active minecraft@$unit
-    
-    if [ ! $? -eq 0 ]; then
-        echo "Guessed unit \"minecraft@$unit\" does not appear to be valid"
+    if unit=$(guessUnitName); then
+        echo "Assuming unit name $unit"
+    else
+        echo "You must specify a unit name. E.g. $(basename $0) -u vanilla110"
         exit 1
     fi
 fi
 
 MSG=${@-no reason given}
 
-systemctl --user set-environment "TIME=$time"
-systemctl --user set-environment "MSG=$MSG"
-systemctl --user stop minecraft@$unit
-systemctl --user set-environment "TIME=$defaultTime"
-systemctl --user set-environment "MSG=no reason given"
+ctl set-environment "TIME=$time"
+ctl set-environment "MSG=$MSG"
+ctl stop minecraft@$unit
+ctl set-environment "TIME=$defaultTime"
+ctl set-environment "MSG=$defaultMsg"
 
 if $restart; then
-    systemctl --user start minecraft@$unit
+    ctl start minecraft@$unit
 fi
