@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rcon=$(dirname $0)/rcon.sh
+rcon=$(dirname $(readlink -f $0))/rcon.sh
 
 $rcon scoreboard objectives add Deaths deathCount
 $rcon scoreboard objectives setdisplay belowName Deaths

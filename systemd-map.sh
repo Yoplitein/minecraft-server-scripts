@@ -2,7 +2,7 @@
 
 function rcon()
 {
-    $(dirname $0)/rcon.sh $@
+    $(dirname $(readlink -f $0))/rcon.sh $@
     
     if [ $? -eq 255 ]; then
         echo "Server is down!"
@@ -11,5 +11,5 @@ function rcon()
 }
 
 rcon say Running map render
-$(dirname $0)/rendermap.sh --quiet
+$(dirname $(readlink -f $0))/rendermap.sh --quiet
 rcon say Map render complete

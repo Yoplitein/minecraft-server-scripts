@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$(dirname $0)/stop.sh -r $@
+$(dirname $(readlink -f $0))/stop.sh -r $@

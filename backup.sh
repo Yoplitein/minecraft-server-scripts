@@ -4,7 +4,7 @@ export BUP_DIR=./bup
 
 function rcon()
 {
-    $(dirname $0)/rcon.sh $@
+    $(dirname $(readlink -f $0))/rcon.sh $@
     
     if [ $? -eq 255 ]; then
         echo "Server is down!"
