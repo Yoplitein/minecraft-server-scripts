@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mc "execute $1 ~ ~ ~ summon minecraft:lightning_bolt"
+mc "execute at $1 run summon minecraft:lightning_bolt"
