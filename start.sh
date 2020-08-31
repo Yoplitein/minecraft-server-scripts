@@ -41,4 +41,5 @@ if [ -z "$unit" ]; then
     fi
 fi
 
+ctl --quiet is-failed minecraft@$unit && ctl --quiet reset-failed minecraft@$unit
 ctl start minecraft@$unit
