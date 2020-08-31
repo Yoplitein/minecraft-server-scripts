@@ -14,13 +14,19 @@ wget $url
 java -jar forge-${version}-installer.jar --installServer
 rm -vf forge-${version}-installer.jar{,.log}
 
+newJar="forge-${version}.jar"
+
+if [ ! -e $newJar ]; then
+    echo "Forge jar naming scheme seems to have changed, expected $newJar"
+    exit 1
+fi
+
 if [ -e server.jar ]; then
     serverJar=$(readlink server.jar)
-    newJar="forge-${version}-universal.jar"
     
     if [ -n "$serverJar" ] && [[ "$serverJar" != minecraft* ]] && [ "$serverJar" != "$newJar" ]; then
         rm -vf $serverJar
     fi
 fi
 
-ln -vfs forge-${version}-universal.jar server.jar
+ln -vfs $newJar server.jar
