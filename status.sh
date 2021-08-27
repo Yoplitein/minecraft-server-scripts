@@ -42,4 +42,4 @@ if [ -z "$unit" ]; then
     fi
 fi
 
-ctl status minecraft@$unit
+ctl status minecraft@$unit -n 0
