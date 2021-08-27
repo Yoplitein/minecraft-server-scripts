@@ -9,7 +9,7 @@ WorkingDirectory=/home/minecraft/%i
 Environment=MEM_MIN=512M
 Environment=MEM_MAX=2G
 EnvironmentFile=-/home/minecraft/%i/environ
-ExecStart=/usr/bin/java -Xms${MEM_MIN} -Xmx${MEM_MAX} -XX:PermSize=512M  -XX:+UseG1GC -Dsun.rmi.dgc.server.gcInterval=2147483646 -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M -Dfml.queryResult=confirm $JVM_ARGS -jar server.jar nogui $MC_ARGS
+ExecStart=/usr/bin/env java -Xms${MEM_MIN} -Xmx${MEM_MAX} -XX:PermSize=512M  -XX:+UseG1GC -Dsun.rmi.dgc.server.gcInterval=2147483646 -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M -Dfml.queryResult=confirm $JVM_ARGS -jar server.jar nogui $MC_ARGS
 ExecStop=/home/minecraft/scripts/systemd-stop.sh
 Restart=always
 #KillMode=none
