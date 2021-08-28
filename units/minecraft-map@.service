@@ -3,6 +3,6 @@ Description=Minecraft map render of %I
 
 [Service]
 Type=simple
-WorkingDirectory=/home/minecraft/%i
-ExecStart=/home/minecraft/scripts/systemd-map.sh
+WorkingDirectory=%h/%i
+ExecStart=%h/scripts/map.sh
 SyslogIdentifier=render-%i
