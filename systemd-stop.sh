@@ -2,7 +2,7 @@
 
 function rcon()
 {
-    $(dirname $(readlink -f $0))/rcon.sh $@
+    $(dirname $(readlink -f $0))/rcon.py "$*"
     
     if [ $? -eq 255 ]; then
         echo "Server is down!"
