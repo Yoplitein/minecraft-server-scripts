@@ -11,7 +11,7 @@ Environment=MEM_MAX=2G
 Environment=JVM_ARGS="-Dfml.queryResult=confirm -XX:+UseG1GC -Dsun.rmi.dgc.server.gcInterval=2147483646 -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M"
 Environment=MC_ARGS=nogui
 EnvironmentFile=-%h/%i/environ
-ExecStart=/usr/bin/env java -Xms${MEM_MIN} -Xmx${MEM_MAX} $JVM_ARGS -jar server.jar $MC_ARGS
+ExecStart=%h/scripts/systemd/start.sh
 ExecStop=%h/scripts/systemd/stop.sh
 Restart=always
 #KillMode=none
