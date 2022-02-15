@@ -142,7 +142,7 @@ def main():
 		print("Error: no commands specified in argv", file=sys.stderr)
 		raise SystemExit(1)
 	
-	hostname = guessOption(args.host, "server-ip", str, lambda: socket.gethostbyname(socket.gethostname()))
+	hostname = guessOption(args.host, "server-ip", str, lambda: socket.gethostbyname("localhost"))
 	port = guessOption(args.port, "rcon.port", int, lambda: 25575)
 	def pwfallback():
 		print("RCON password is not set in server.properties, therefore it is disabled!", file=sys.stderr)
