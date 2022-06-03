@@ -10,6 +10,9 @@ fi
 version=$1
 url="http://files.minecraftforge.net/maven/net/minecraftforge/forge/$version/forge-${version}-installer.jar"
 
+# nuke older versions so the launch script doesn't get confused -- it naively globs
+[ -d libraries ] && rm -rf libraries/
+
 wget $url
 java -jar forge-${version}-installer.jar --installServer
 rm -vf forge-${version}-installer.jar{,.log}
