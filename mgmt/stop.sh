@@ -55,11 +55,17 @@ if [ -z "$unit" ]; then
 fi
 
 msg=${@-${defaultMsg}}
+if $restart; then
+    kickmsg="Server restarting: $msg"
+else
+    kickmsg="Server shutting down: $msg"
+fi
 
 echo "Stopping server in $time seconds: $msg"
 
 ctl set-environment "TIME=$time"
 ctl set-environment "MSG=$msg"
+ctl set-environment "KICKMSG=$kickmsg"
 ctl stop minecraft@$unit
 ctl set-environment "TIME=$defaultTime"
 ctl set-environment "MSG=$defaultMsg"

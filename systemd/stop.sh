@@ -22,6 +22,7 @@ function main()
     
     rcon say Server going down in $TIME seconds$MSG
     sleep $TIME
+    rcon kick @a $KICKMSG
     rcon stop
     sleep 5
 }
