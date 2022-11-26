@@ -67,8 +67,9 @@ ctl set-environment "TIME=$time"
 ctl set-environment "MSG=$msg"
 ctl set-environment "KICKMSG=$kickmsg"
 ctl stop minecraft@$unit
-ctl set-environment "TIME=$defaultTime"
-ctl set-environment "MSG=$defaultMsg"
+ctl set-environment "TIME="
+ctl set-environment "MSG="
+ctl set-environment "KICKMSG="
 
 if $restart; then
     ctl start minecraft@$unit
